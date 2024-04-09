@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { MovieCard } from './components/MovieCard';
+import { movies } from './components/constants/moviesMock';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     <MovieCard
+      movieId={movies[0].id}
+      posterPath={movies[0].poster_path}
+      title={movies[0].title}
+      voteAverage={movies[0].vote_average}
+      genreId={movies[0].genre_ids[0]}
+     />
     </div>
   );
 }
