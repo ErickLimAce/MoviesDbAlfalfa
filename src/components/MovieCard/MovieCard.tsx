@@ -1,7 +1,7 @@
 import { IMovieCard } from "./types";
 import { Pill } from "../Pill";
-import { IMAGE_SOURCE } from "../constants/moviesMock";
-import genresData from '../constants/genres.json';
+import { IMAGE_SOURCE } from "../../constants/moviesMock";
+import genresData from '../../constants/genres.json';
 import './MovieCard.css'
 
 const MovieCard: React.FC<IMovieCard> = ({
