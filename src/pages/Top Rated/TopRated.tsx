@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { IMovieResponse, getPopularMovies } from "../../services";
+import { IMovieResponse, getTopRated } from "../../services";
 import { MovieCard } from "../../components/MovieCard";
 
-const Popular: React.FC = () => {
+const TopRated: React.FC = () => {
     const [movies, setMovies] = useState<IMovieResponse[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [errorMovies, setErrorMovies] = useState<boolean>(false);
 
-    const getPopular = async () => {
-        await getPopularMovies()
+    const getTop = async () => {
+        await getTopRated()
             .then((res) => {
                 if (res && res.data) {
                     console.log(res.data, "res");
@@ -23,11 +23,12 @@ const Popular: React.FC = () => {
 
     useEffect(() => {
         setLoading(true);
-        getPopular();
+        getTop();
     }, []);
 
     return (
-        <div className='block pl-7'>
+        <div>
+             <div className='block pl-7'>
             {loading && <div> Loading... </div>}
             {errorMovies && <div> Error... </div>}
             <div className='table max-w-[100%]'>
@@ -43,7 +44,8 @@ const Popular: React.FC = () => {
                 ))}
             </div>
         </div>
+        </div>
     );
 };
 
-export default Popular;
+export default TopRated;
