@@ -3,6 +3,9 @@ import { Pill } from "../Pill";
 import { IMAGE_SOURCE } from "../../constants/moviesMock";
 import genresData from '../../constants/genres.json';
 import './MovieCard.css'
+import { useNavigate } from "react-router-dom";
+import { number } from "prop-types";
+import { ROUTES } from "../../routes/constants";
 
 const MovieCard: React.FC<IMovieCard> = ({
     title,
@@ -11,6 +14,7 @@ const MovieCard: React.FC<IMovieCard> = ({
     voteAverage,
     posterPath
 }) => {
+    const navigate = useNavigate();
     const poster = IMAGE_SOURCE + posterPath;
 
     const getGenre = (id: number): string => {
@@ -18,8 +22,17 @@ const MovieCard: React.FC<IMovieCard> = ({
         return genre?.name || 'Uknown';
     }
 
+    const navigateMovies = ( id: number, movieName: string ) => {
+        navigate(`${ROUTES.SHOW}${id}`, { state: { name: movieName }});
+    }
+
     return (
-        <div className="show-box">
+        <div 
+            className="show-box"
+            onClick={() => {
+                navigateMovies(movieId,title)
+            }}
+        >
             <div className=" min-w-[100%] overflow-hidden ml-0 bg-[#2f3238] float-none">
                 <img className="h-[370px] relative max-w-none min-w-[100%] overflow-hidden" src={poster} alt="poster"></img>
                 <div className="info">

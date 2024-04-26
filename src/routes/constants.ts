@@ -4,5 +4,6 @@ export const ROUTES = {
     HOME: '/',
     POPULAR: '/popular',
     TOPRATED: '/top_rated',
-    UPCOMING: '/upcoming'
+    UPCOMING: '/upcoming',
+    SHOW: '/show/'
 };
