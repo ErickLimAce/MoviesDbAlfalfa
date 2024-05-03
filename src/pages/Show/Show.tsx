@@ -68,7 +68,7 @@ const Show = () => {
         <div className="my-4 mx-44 shadow-2xl rounded-3xl bg-blue-100">
             <div className="p-8">
                 <div className="flex">
-                    <div className=" min-w-[20%] min-h-[20%]">
+                    <div className="min-w-[20%] min-h-[20%] max-w-[20%] max-h-[20%]">
                         <img className="rounded-3xl" src={IMAGE_SOURCE + movie?.poster_path} alt="poster"></img>
                         <div className="flex mt-2 space-x-2">
                             <button className="bg-blue-950 text-white rounded-3xl px-4 py-2 flex-1 text-center" onClick={goBack}>
