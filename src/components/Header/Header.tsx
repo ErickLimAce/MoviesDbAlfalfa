@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ROUTES } from "../../routes/constants";
 
-
 const Header: React.FC = () => {
     const location = useLocation();
     return (
@@ -21,10 +20,13 @@ const Header: React.FC = () => {
                     <li>
                         <Link to={ROUTES.UPCOMING}className={location.pathname === ROUTES.UPCOMING ? "text-white" : ""}>Upcoming</Link>
                     </li>
+                    <li>
+                        <Link to={ROUTES.FAVORITES}>My Favorites</Link>
+                    </li>
                 </ul>
             </nav>
         </div>
-    )
+    );
 };
 
-export default Header
+export default Header;
