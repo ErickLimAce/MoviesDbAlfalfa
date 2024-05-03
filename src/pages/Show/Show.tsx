@@ -39,8 +39,8 @@ const Show = () => {
     }, [])
 
     return (
-        <div className=" mx-44 shadow-2xl rounded-3xl bg-blue-200 ">
-            <div className="p-8">
+        <div className=" mx-44 shadow-2xl rounded-3xl bg-blue-200 absolute top-1/2 transform -translate-y-1/2">
+            <div className="p-8 ">
                 <div>Show id: { id }</div>
                 <div className="flex">
                     <div className=" min-w-[20%] min-h-[20%]">

@@ -35,7 +35,7 @@ const MovieCard: React.FC<IMovieCard> = ({
         >
             <div className=" min-w-[100%] overflow-hidden ml-0 bg-[#2f3238] float-none">
                 <img className="h-[370px] relative max-w-none min-w-[100%] overflow-hidden" src={poster} alt="poster"></img>
-                <div className="info">
+                <div className="info opacity-0 transition-opacity duration-300 hover:opacity-100">
                     <div className="text-white pt-[15px] pr-[10px] pb-[15px] pl-[10px] w-[100%] align-middle">
                         <div>
                             <Pill title={getGenre(genreId)} color="red"></Pill>
