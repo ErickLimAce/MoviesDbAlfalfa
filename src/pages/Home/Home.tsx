@@ -3,7 +3,7 @@ import { movies } from "../../constants/moviesMock";
 
 const Home = () => {
     return (
-        <div className='block pt-14 pl-7 bg-black'>
+        <div className='block block-page pt-14 pl-7 '>
             <div className='table max-w-[100%]'>
                 {movies.map((movie, index) => (
                     <MovieCard

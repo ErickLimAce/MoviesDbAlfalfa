@@ -28,7 +28,7 @@ const Upcoming: React.FC = () => {
 
     return (
         <div>
-             <div className='block pl-7'>
+             <div className='block block-page pl-7'>
             {loading && <div> Loading... </div>}
             {errorMovies && <div> Error... </div>}
             <div className='table max-w-[100%]'>

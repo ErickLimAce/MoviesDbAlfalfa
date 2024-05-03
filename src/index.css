@@ -4,4 +4,4 @@
 
 
 /*  */
-.block { @apply pt-14 }
+.block-page { @apply pt-14 bg-black }
