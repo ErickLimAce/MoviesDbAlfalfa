@@ -32,10 +32,9 @@ const Favorites = () => {
         runGetFavorites();
     }, [])
     return (
-        <div>
+        <div className="block-page min-h-screen pl-7 ">
             {!loading ? (
-                <div>
-                    <h2>My Favorites</h2>
+                <div className="text-white">
                     {favorites && favorites.length > 0 ? (
                         <div>
                             {shows && shows.length > 0 ? (

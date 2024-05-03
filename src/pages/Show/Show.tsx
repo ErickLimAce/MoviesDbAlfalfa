@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { IDetailsResponse, getDetailsMovies } from "../../services";
 import { IMAGE_SOURCE } from "../../constants/moviesMock";
-import { ProgressBar } from "../../components/ProgressBar";
+
+
 
 const Show = () => {
     const { id } = useParams();
@@ -31,7 +32,6 @@ const Show = () => {
         setIsFavorite(false);
         localStorage.setItem("favorites", JSON.stringify(newFavorites));
     }
-
     const goBack = () => {
         navigate(-1);
     }
@@ -77,9 +77,7 @@ const Show = () => {
                             <p className="font-bold text-3xl pb-4">{movie?.title} ({movie?.release_date ? new Date(movie.release_date).getFullYear() : 'N/A'})</p>
                             <p>{movie?.overview}</p>
                         </div>
-                        <div>
-                            <ProgressBar value={movie?.vote_average ?? 0}></ProgressBar>
-                        </div>
+                        
                     </div>
                 </div>
 
