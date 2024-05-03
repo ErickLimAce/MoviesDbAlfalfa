@@ -5,7 +5,8 @@ import { ROUTES } from "../../routes/constants";
 const Header: React.FC = () => {
     const location = useLocation();
     return (
-        <div className="fixed z-50 bg-red-500 border border-red-800 rounded-lg left-5">
+        
+        <div className="fixed z-50 bg-red-700 border border-red-950 rounded-lg left-5 mt-2">
             <nav>
                 <ul className="flex gap-4 py-2 justify-left mx-7 ">
                     <li>
