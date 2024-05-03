@@ -65,11 +65,25 @@ const Show = () => {
     }, [])
 
     return (
-        <div className=" mx-44 shadow-2xl rounded-3xl bg-blue-200 ">
+        <div className="my-4 mx-44 shadow-2xl rounded-3xl bg-blue-100">
             <div className="p-8">
                 <div className="flex">
                     <div className=" min-w-[20%] min-h-[20%]">
                         <img className="rounded-3xl" src={IMAGE_SOURCE + movie?.poster_path} alt="poster"></img>
+                        <div className="flex mt-2 space-x-2">
+                            <button className="bg-blue-950 text-white rounded-3xl px-4 py-2 flex-1 text-center" onClick={goBack}>
+                                Ir atras
+                            </button>
+                            {isFavorite ? (
+                                <button className="bg-yellow-300 text-black rounded-3xl px-4 py-2 flex-1 text-center hover:bg-blue-950 hover:text-white" onClick={removeFavorite}>
+                                    Remove Favorite
+                                </button>
+                            ) : (
+                                <button className="bg-blue-950 text-white rounded-3xl px-4 py-2 flex-1 text-center hover:bg-yellow-300 hover:text-black" onClick={addFavorite}>
+                                    Add Favorite
+                                </button>
+                            )}
+                        </div>
                     </div>
                     <div className="flex flex-col min-h-full px-10">
                         <div className="flex-grow">
@@ -82,21 +96,8 @@ const Show = () => {
                     </div>
                 </div>
 
-                <button className="p-4 bg-white rounded-3xl mt-2" onClick={goBack}> Ir atras </button>
-                { isFavorite ? (
-                    <div>
-                        <button className="bg-red-500" onClick={removeFavorite}>
-                            Remove Favorite
-                        </button>
-                    </div>
-                ):
-                (
-                    <div>
-                        <button className="bg-blue-500" onClick={addFavorite}>
-                            Add Favorite
-                        </button>
-                    </div>
-                )}
+
+
             </div>
         </div>
     );

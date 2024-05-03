@@ -27,8 +27,8 @@ const MovieCard: React.FC<IMovieCard> = ({
     }
 
     return (
-        <div 
-            className="show-box"
+        <div
+            className="show-box hover:scale-110"
             onClick={() => {
                 navigateMovies(movieId,title)
             }}
