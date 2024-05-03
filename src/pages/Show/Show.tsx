@@ -85,7 +85,7 @@ const Show = () => {
                     </div>
                 </div>
             <div className="relative ">
-                <button className="p-4 pl-12 bg-slate-500 rounded-3xl mt-5 mb-5 hover:bg-slate-600 animate-[pulse_2s] " onClick={goBack}>
+                <button className="p-4 pl-12 bg-slate-500 rounded-3xl mt-5 mb-5 hover:bg-slate-600 animate-[pulse_2s] transform transition duration-500 hover:scale-105  " onClick={goBack}>
                     {/* /*heroicons.com */ }
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 ">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
@@ -95,7 +95,7 @@ const Show = () => {
             </div>
                 { isFavorite ? (
                 <div>
-                    <button className="bg-red-700 flex items-center gap-2 rounded-xl p-1 hover:bg-red-900 animate-[pulse_2s]" onClick={removeFavorite}>
+                    <button className="bg-red-700 flex items-center gap-2 rounded-xl p-1 hover:bg-red-900 animate-[pulse_2s] transform transition duration-500 hover:scale-105" onClick={removeFavorite}>
                         Remove Favorite
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ const Show = () => {
                 
                 (
                 <div>
-                        <button className="bg-slate-500 flex items-center gap-2 rounded-xl p-1 hover:bg-green-900  text-white animate-[pulse_2s] " onClick={addFavorite}>
+                        <button className="bg-slate-500 flex items-center gap-2 rounded-xl p-1 hover:bg-green-900  text-white animate-[pulse_2s] transform transition duration-500 hover:scale-105" onClick={addFavorite}>
                             Add Favorite
                                 <svg 
                                     xmlns="http://www.w3.org/2000/svg"
