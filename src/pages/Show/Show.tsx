@@ -3,6 +3,7 @@ import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { IDetailsResponse, getDetailsMovies } from "../../services";
 import { IMAGE_SOURCE } from "../../constants/moviesMock";
 import { ProgressBar } from "../../components/ProgressBar";
+import imdbLogo from '../../LogoIMDB.png';
 
 const Show = () => {
     const { id } = useParams();
@@ -85,12 +86,17 @@ const Show = () => {
                             )}
                         </div>
                     </div>
-                    <div className="flex flex-col min-h-full px-10">
-                        <div className="flex-grow">
+                    <div className="flex flex-col min-h-full px-10 justify-between">
+                        <div className="flex flex-col justify-center flex-grow">
                             <p className="font-bold text-3xl pb-4">{movie?.title} ({movie?.release_date ? new Date(movie.release_date).getFullYear() : 'N/A'})</p>
                             <p>{movie?.overview}</p>
                         </div>
-                        <div>
+                        <div className="flex justify-center items-center flex-grow">
+                            <a href={`https://www.imdb.com/title/${movie?.imdb_id}`}>
+                                <img src={imdbLogo} alt="IMDB Logo" className="w-42 h-40" />
+                            </a>
+                        </div>
+                        <div className="flex-grow">
                             <ProgressBar value={movie?.vote_average ?? 0}></ProgressBar>
                         </div>
                     </div>
