@@ -8,18 +8,18 @@ const Favorites = () => {
     const favorites: string = localStorage.getItem("favorites") || "";
 
     const runGetFavorites = async () => {
-        if(favorites.length) {
+        if (favorites.length) {
             const favoritesArray = JSON.parse(favorites);
             const newShows = await Promise.all(
                 favoritesArray.map(async (favoriteId: number) => {
                     return getDetailsMovies(favoriteId)
-                    .then((res) => {
-                        if(res && res.data) {
-                            return res.data;
-                        }
-                    }).catch ((err) => {
-                        console.log(err, "err");
-                    });
+                        .then((res) => {
+                            if (res && res.data) {
+                                return res.data;
+                            }
+                        }).catch((err) => {
+                            console.log(err, "err");
+                        });
                 })
             );
             setShows(newShows);
@@ -32,40 +32,18 @@ const Favorites = () => {
         runGetFavorites();
     }, [])
     return (
-        <div>
-            {!loading ? (
-                <div>
-                    <h2>My Favorites</h2>
-                    {favorites && favorites.length > 0 ? (
-                        <div>
-                            {shows && shows.length > 0 ? (
-                                <div>
-                                    {shows.map((movie: IDetailsResponse) => (
-                                        <MovieCard
-                                        key={movie.id}
-                                        movieId={movie.id}
-                                        posterPath={movie.poster_path}
-                                        title={movie.title}
-                                        voteAverage={movie.vote_average}
-                                        genreId={movie.genres[0].id}
-                                    />
-                                    ))}
-                                </div>
-                            ) : (
-                                <div></div>
-                            )}
-                        </div>
-                    ) : (
-                        <div>
-                            Oops
-                        </div>
-                    )}
-                </div>
-            ) : (
-                <div>
-                    <h2>Loading...</h2>
-                </div>
-            )}
+        <div className="w-screen flex flex-row flex-wrap justify-center items-start m-2">
+            {loading && <div> Loading... </div>}
+            {shows.map((movie: IDetailsResponse) => (
+                                <MovieCard
+                                    key={movie.id}
+                                    movieId={movie.id}
+                                    posterPath={movie.poster_path}
+                                    title={movie.title}
+                                    voteAverage={movie.vote_average}
+                                    genreId={movie.genres[0].id}
+                                />
+                            ))}
         </div>
     );
 }

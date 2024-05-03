@@ -33,8 +33,8 @@ const MovieCard: React.FC<IMovieCard> = ({
                 navigateMovies(movieId,title)
             }}
         >
-            <div className=" min-w-[100%] overflow-hidden ml-0 bg-[#2f3238] float-none">
-                <img className="h-[370px] relative max-w-none min-w-[100%] overflow-hidden" src={poster} alt="poster"></img>
+            <div className="bg-[#2f3238]">
+                <img className="" src={poster} alt="poster"></img>
                 <div className="info">
                     <div className="text-white pt-[15px] pr-[10px] pb-[15px] pl-[10px] w-[100%] align-middle">
                         <div>
