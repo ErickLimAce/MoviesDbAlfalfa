@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { number } from "prop-types";
 import { ROUTES } from "../../routes/constants";
 
+
 const MovieCard: React.FC<IMovieCard> = ({
     title,
     genreId,

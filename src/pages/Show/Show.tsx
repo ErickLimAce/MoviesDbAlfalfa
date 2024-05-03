@@ -80,6 +80,8 @@ const Show = () => {
                         <div className="flex-grow">
                             <p className="font-bold text-3xl pb-4">{movie?.title} ({movie?.release_date ? new Date(movie.release_date).getFullYear() : 'N/A'})</p>
                             <p>{movie?.overview}</p>
+                            <p className="mr-[10px] text-[13px] font-medium table uppercase leading-[20px] w-[100%] animate-[pulse_2s]">* {movie?.vote_average}  / 10</p>
+                            
                         </div>
                         
                     </div>
@@ -116,7 +118,7 @@ const Show = () => {
                 
                 (
                 <div>
-                        <button className="bg-slate-500 flex items-center gap-2 rounded-xl p-1 hover:bg-green-900  text-white animate-[pulse_2s] transform transition duration-500 hover:scale-105" onClick={addFavorite}>
+                        <button className="bg-slate-500 flex items-center gap-2 rounded-xl p-1 hover:bg-green-900  text-white animate-[pulse_2s] transform transition duration-500 hover:scale-105 " onClick={addFavorite}>
                             Add Favorite
                                 <svg 
                                     xmlns="http://www.w3.org/2000/svg"
