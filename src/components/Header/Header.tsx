@@ -2,12 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../routes/constants";
 
-
 const Header: React.FC = () => {
     return (
-        <div>
-            <nav>
-                <ul className="flex gap-4 pb-4 justify-center">
+        <div className="bg-blue-950">
+            <nav className="sticky top-0 z-50">
+                <ul className="flex gap-16 p-4 justify-center text-white text-xl">
                     <li>
                         <Link to={ROUTES.HOME}>Home</Link>
                     </li>
@@ -20,10 +19,13 @@ const Header: React.FC = () => {
                     <li>
                         <Link to={ROUTES.UPCOMING}>Upcoming</Link>
                     </li>
+                    <li>
+                        <Link to={ROUTES.FAVORITES}>My Favorites</Link>
+                    </li>
                 </ul>
             </nav>
         </div>
-    )
+    );
 };
 
-export default Header
+export default Header;
