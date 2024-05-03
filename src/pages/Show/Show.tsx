@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { IDetailsResponse, getDetailsMovies } from "../../services";
 import { IMAGE_SOURCE } from "../../constants/moviesMock";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -65,6 +66,34 @@ const Show = () => {
         getDetails();
     }, [])
 
+    interface RatingProps {
+        voteAverage: number;
+      }
+      
+      const Rating: React.FC<RatingProps> = ({ voteAverage }) => {
+        const maxStars = 5;
+        const rating = Math.round((voteAverage / 10) * maxStars);
+        const stars = [];
+      
+        for (let i = 0; i < maxStars; i++) {
+          if (i < rating) {
+            stars.push(<FontAwesomeIcon key={i} icon={faStar} style={{ color: 'gold' }} />);
+          } else {
+            stars.push(<FontAwesomeIcon key={i} icon={faStar} style={{ color: 'gray' }} />);
+          }
+        }
+      
+        return (
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{ marginRight: '8px' }}>
+                {stars}
+              </div>
+              <span style={{ marginLeft: '4px' }}>{voteAverage} / 10</span>
+            </div>
+          );
+          
+      };
+
     return (
         <div className="block-page min-h-screen ">
         <div className=" mx-44 shadow-2xl rounded-3xl bg-slate-700 absolute top-1/2 transform -translate-y-1/2 ">
@@ -80,12 +109,14 @@ const Show = () => {
                         <div className="flex-grow">
                             <p className="font-bold text-3xl pb-4">{movie?.title} ({movie?.release_date ? new Date(movie.release_date).getFullYear() : 'N/A'})</p>
                             <p>{movie?.overview}</p>
-                            <p className="mr-[10px] text-[13px] font-medium table uppercase leading-[20px] w-[100%] animate-[pulse_2s]">* {movie?.vote_average}  / 10</p>
-                            
+                            <div>
+                                <p className="mr-[10px] text-[18px] font-semibold table uppercase leading-[20px] w-[100%] animate-[pulse_2s] mt-5">
+                                    {movie?.vote_average !== undefined && <Rating voteAverage={movie.vote_average} />}
+                                </p>
+                            </div>
                         </div>
-                        
-                    </div>
-                </div>
+                    </div>                    
+                </div>                
             <div className="relative ">
                 <button className="p-4 pl-12 bg-slate-500 rounded-3xl mt-5 mb-5 hover:bg-slate-600 animate-[pulse_2s] transform transition duration-500 hover:scale-105  " onClick={goBack}>
                     {/* /*heroicons.com */ }
@@ -136,6 +167,9 @@ const Show = () => {
                 </div>
                 )}
             </div>
+            <div className="bg-white fixed p-2 rounded-lg">
+                            <p>Recomendaciones</p>
+                        </div>
         </div>
      </div>
     );

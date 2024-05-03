@@ -42,7 +42,7 @@ const MovieCard: React.FC<IMovieCard> = ({
                             <Pill title={getGenre(genreId)} color="red"></Pill>
                         </div>
                         <p className="block text-[19px] font-bold leading-[27px] mt-[10px] w-[100%]">{title}</p>
-                        <p className="mr-[10px] text-[13px] font-medium table uppercase leading-[20px] w-[100%]">* {voteAverage} / 10</p>
+                        <p className="mr-[10px] text-[13px] font-medium table uppercase leading-[20px] w-[100%]">* {voteAverage.toFixed(2)} / 10</p>
                     </div>
                 </div>
             </div>
