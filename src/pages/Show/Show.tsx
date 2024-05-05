@@ -85,7 +85,7 @@ const Show = () => {
         setLoading(true);
         getDetails();
         getRecommended();
-    }, [])
+    }, [id])
 
     interface RatingProps {
         voteAverage: number;
