@@ -189,6 +189,7 @@ const Show = () => {
             </div>
             <div className="bg-white fixed p-2 rounded-lg">
                             <p>Recomendaciones</p>
+                            
                         </div>
         </div>
      </div>
