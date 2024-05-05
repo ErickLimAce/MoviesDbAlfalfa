@@ -4,9 +4,9 @@ import { IDetailsResponse, IMovieResponse, getDetailsMovies, getRecommendations 
 import { IMAGE_SOURCE } from "../../constants/moviesMock";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-
-import imdbLogo from '../../LogoIMDB.png';
 import { MovieCard } from "../../components/MovieCard";
+import {Carousel} from "../../components/Carousel";
+
 
 const Show = () => {
     const { id } = useParams();
@@ -192,18 +192,10 @@ const Show = () => {
             <div className="block-page fixed rounded-lg min-w-screen">
                            
             <h1 className="flex mx-64 text-3xl justify-center items-center font-bold my-6 text-white">Recommended:</h1>
-            <div className="flex flex-row flex-wrap justify-center items-start my-2 ">
-                {movies.map((movie) => (
-                        <MovieCard
-                            key={movie.id}
-                            movieId={movie.id}
-                            posterPath={movie.poster_path}
-                            title={movie.title}
-                            voteAverage={movie.vote_average}
-                            genreId={movie.genre_ids[0]}
-                        />
-                    ))}
-            </div>               
+            <div className="">
+            <Carousel movies={movies} />
+                    {/*<Carousel movies={movies} />;*/}
+            </div>                   
             </div>
             </div>
 
