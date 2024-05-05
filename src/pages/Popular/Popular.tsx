@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { IMovieResponse, getPopularMovies } from "../../services";
 import { MovieCard } from "../../components/MovieCard";
 
+
 const Popular: React.FC = () => {
     const [movies, setMovies] = useState<IMovieResponse[]>([]);
     const [loading, setLoading] = useState<boolean>(false);

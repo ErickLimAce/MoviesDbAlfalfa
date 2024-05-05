@@ -3,45 +3,70 @@ import { TopRated } from "../Top Rated";
 import { Upcoming } from "../Upcoming";
 import { Carousel } from "../../components/Carousel";
 import { movies } from "../../constants/moviesMock";
+import React, { useState, useEffect } from "react";
+import { getPopularMovies, getTopRated, getUpcoming } from "../../services";
+
+
 
 const Home = () => {
-    // Convertir la propiedad release_date de string a Date
-    const moviesWithDateConversion = movies.map(movie => ({
-        ...movie,
-        release_date: new Date(movie.release_date)
-    }));
+    const [popularMovies, setPopularMovies] = useState([]);
+    const [topRatedMovies, setTopRatedMovies] = useState([]);
+    const [upcomingMovies, setUpcomingMovies] = useState([]);
 
-    // Dividir las películas en tres partes para tres filas de carrusel
-    const chunkSize = Math.ceil(moviesWithDateConversion.length / 3);
-    const movieChunks = Array.from({ length: 3 }, (_, index) =>
-        moviesWithDateConversion.slice(index * chunkSize, (index + 1) * chunkSize)
-    );
+    useEffect(() => {
+        // Obtener películas populares
+        getPopularMovies()
+            .then((response) => {
+                setPopularMovies(response.data.results); // Suponiendo que los datos de películas están en response.data.results
+            })
+            .catch((error) => {
+                console.error("Error fetching popular movies:", error);
+            });
+
+        // Obtener películas mejor calificadas
+        getTopRated()
+            .then((response) => {
+                setTopRatedMovies(response.data.results); // Suponiendo que los datos de películas están en response.data.results
+            })
+            .catch((error) => {
+                console.error("Error fetching top rated movies:", error);
+            });
+
+        // Obtener películas próximas
+        getUpcoming()
+            .then((response) => {
+                setUpcomingMovies(response.data.results); // Suponiendo que los datos de películas están en response.data.results
+            })
+            .catch((error) => {
+                console.error("Error fetching upcoming movies:", error);
+            });
+    }, []);
 
     return (
         <div className='block-page pt-14 pl-7'>
             {/* Renderizar la fila de películas populares */}
-            <Carousel movies={movieChunks[0].map(movie => ({
-                ...movie,
-                backdrop_path: movie.backdrop_path || '' // Convertir backdrop_path null a string vacía
-            }))}>
-                <Popular />
-            </Carousel>
+            <div>
+                <h2 className=" text-slate-600 bg-slate-100 w-fit p-1 rounded-lg">Populares</h2>
+                <Carousel movies={popularMovies}>
+                    <Popular />
+                </Carousel>
+            </div>
             
             {/* Renderizar la fila de películas mejor calificadas */}
-            <Carousel movies={movieChunks[1].map(movie => ({
-                ...movie,
-                backdrop_path: movie.backdrop_path || '' // Convertir backdrop_path null a string vacía
-            }))}>
-                <TopRated />
-            </Carousel>
+            <div>
+                <h2 className=" text-slate-600 bg-slate-100 w-fit p-1 rounded-lg">Mejor Calificadas</h2>
+                <Carousel movies={topRatedMovies}>
+                    <TopRated />
+                </Carousel>
+            </div>
             
             {/* Renderizar la fila de películas próximas */}
-            <Carousel movies={movieChunks[2].map(movie => ({
-                ...movie,
-                backdrop_path: movie.backdrop_path || '' // Convertir backdrop_path null a string vacía
-            }))}>
-                <Upcoming />
-            </Carousel>
+            <div>
+                <h2 className=" text-slate-600 bg-slate-100 w-fit p-1 rounded-lg">Próximas</h2>
+                <Carousel movies={upcomingMovies}>
+                    <Upcoming />
+                </Carousel>
+            </div>
         </div>
     );
 }
