@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
-import { IDetailsResponse, getDetailsMovies } from "../../services";
+import { IDetailsResponse, IMovieResponse, getDetailsMovies, getRecommendations } from "../../services";
 import { IMAGE_SOURCE } from "../../constants/moviesMock";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
+import imdbLogo from '../../LogoIMDB.png';
+import { MovieCard } from "../../components/MovieCard";
 
 
 const Show = () => {
@@ -14,6 +16,7 @@ const Show = () => {
 
     const [movie, setMovie] = useState<IDetailsResponse>();
     const [loading, setLoading] = useState<boolean>(false);
+    const [movies, setMovies] = useState<IMovieResponse[]>([]);
 
     const [isFavorite, setIsFavorite] = useState<boolean>(false);
     const [favorites, setFavorites] = useState<string>("");
@@ -56,6 +59,23 @@ const Show = () => {
 
     }
 
+    const getRecommended = async () => {
+        const movieId = id ? parseInt(id) : undefined;
+        if (movieId) {
+            await getRecommendations(movieId)
+                .then((res) => {
+                    if (res && res.data) {
+                        console.log(res.data, "res");
+                        setMovies(res.data.results);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err, "err");
+                });
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
         const favs = localStorage.getItem('favorites') || "";
         setFavorites(favs);
@@ -64,6 +84,7 @@ const Show = () => {
         }
         setLoading(true);
         getDetails();
+        getRecommended();
     }, [])
 
     interface RatingProps {
