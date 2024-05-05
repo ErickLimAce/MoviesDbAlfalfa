@@ -8,7 +8,6 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import imdbLogo from '../../LogoIMDB.png';
 import { MovieCard } from "../../components/MovieCard";
 
-
 const Show = () => {
     const { id } = useParams();
     const location = useLocation();
