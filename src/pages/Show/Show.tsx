@@ -108,7 +108,7 @@ const Show = () => {
               <div style={{ marginRight: '8px' }}>
                 {stars}
               </div>
-              <span style={{ marginLeft: '4px' }}>{voteAverage} / 10</span>
+              <span style={{ marginLeft: '4px' }}>{voteAverage.toFixed(2)} / 10</span>
             </div>
           );
           
@@ -188,7 +188,21 @@ const Show = () => {
                 )}
             </div>
             <div className="bg-white fixed p-2 rounded-lg">
-                            <p>Recomendaciones</p>
+                           
+                            <h1 className="flex mx-64 text-3xl justify-center items-center font-bold my-6">Recommended:</h1>
+            <div className="flex flex-row flex-wrap justify-center items-start my-2 mx-40">
+                {movies.map((movie) => (
+                        <MovieCard
+                            key={movie.id}
+                            movieId={movie.id}
+                            posterPath={movie.poster_path}
+                            title={movie.title}
+                            voteAverage={movie.vote_average}
+                            genreId={movie.genre_ids[0]}
+                        />
+                    ))}
+            </div>
+
                             
                         </div>
         </div>
