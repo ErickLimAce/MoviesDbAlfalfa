@@ -83,7 +83,7 @@ const Show = () => {
         setLoading(true);
         getDetails();
         getRecommended();
-    }, [])
+    }, [id])
 
     return (
         <div>
