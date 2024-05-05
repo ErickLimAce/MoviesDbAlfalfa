@@ -19,49 +19,45 @@ const Carousel: React.FC<CarouselProps> = ({ movies }) => {
   };
 
   // Convertir la propiedad release_date a tipo Date
-  const moviesWithDateConversion = movies.map(movie => ({
+  const moviesWithDateConversion = movies.map((movie) => ({
     ...movie,
-    release_date: new Date(movie.release_date)
+    release_date: new Date(movie.release_date),
   }));
 
   return (
-    <div className="relative h-screen">
-      <div className="overflow-hidden">
-        <div className="flex flex-col h-full">
-          <div className="overflow-y-auto flex-grow">
-            {moviesWithDateConversion.map((movie, index) => (
-              <div
-                key={movie.id}
-                className={`transform transition-all duration-300 ${
-                  index === currentIndex ? "opacity-100" : "opacity-0"
-                } ${index === currentIndex ? "scale-100" : "scale-75"} ${
-                  index === currentIndex ? "z-10" : "z-0"
-                }`}
-              >
-                <MovieCard
-                  movieId={movie.id}
-                  posterPath={movie.poster_path}
-                  title={movie.title}
-                  voteAverage={movie.vote_average}
-                  genreId={movie.genre_ids[0]}
-                />
-              </div>
-            ))}
-          </div>
+    <div className="flex items-center justify-center">
+      <div className="max-w-screen-lg w-full relative overflow-hidden">
+        <div
+          className="flex transition-transform duration-300 ease-in-out"
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`,
+          }}
+        >
+          {moviesWithDateConversion.map((movie, index) => (
+            <div key={movie.id} className="w-full">
+              <MovieCard
+                movieId={movie.id}
+                posterPath={movie.poster_path}
+                title={movie.title}
+                voteAverage={movie.vote_average}
+                genreId={movie.genre_ids[0]}
+              />
+            </div>
+          ))}
         </div>
+        <button
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-full"
+          onClick={handlePrev}
+        >
+          Prev
+        </button>
+        <button
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-full"
+          onClick={handleNext}
+        >
+          Next
+        </button>
       </div>
-      <button
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20"
-        onClick={handlePrev}
-      >
-        Prev
-      </button>
-      <button
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20"
-        onClick={handleNext}
-      >
-        Next
-      </button>
     </div>
   );
 };
