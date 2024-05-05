@@ -115,7 +115,8 @@ const Show = () => {
       };
 
     return (
-        <div className="block-page min-h-screen ">
+        <div>
+        <div className="block-page ">
         <div className=" mx-44 shadow-2xl rounded-3xl bg-slate-700 absolute top-1/2 transform -translate-y-1/2 ">
             <div className="p-8">
                 <div className=" bg-slate-600 border border-slate-700 w-fit px-1 rounded-lg mb-1">
@@ -186,11 +187,12 @@ const Show = () => {
                     </button>
                 </div>
                 )}
-            </div>
-            <div className="bg-white fixed p-2 rounded-lg">
+            </div> {/* aqui termina show */ }
+            <div className="">
+            <div className="block-page fixed rounded-lg min-w-screen">
                            
-                            <h1 className="flex mx-64 text-3xl justify-center items-center font-bold my-6">Recommended:</h1>
-            <div className="flex flex-row flex-wrap justify-center items-start my-2 mx-40">
+            <h1 className="flex mx-64 text-3xl justify-center items-center font-bold my-6 text-white">Recommended:</h1>
+            <div className="flex flex-row flex-wrap justify-center items-start my-2 ">
                 {movies.map((movie) => (
                         <MovieCard
                             key={movie.id}
@@ -201,11 +203,13 @@ const Show = () => {
                             genreId={movie.genre_ids[0]}
                         />
                     ))}
+            </div>               
+            </div>
             </div>
 
-                            
-                        </div>
+            
         </div>
+     </div>
      </div>
     );
 };
