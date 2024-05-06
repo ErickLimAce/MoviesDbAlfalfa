@@ -4,4 +4,6 @@
 
 
 /*  */
-.block-page { @apply pt-14 bg-slate-950 min-h-screen}
+.block-page { @apply pt-16 bg-slate-950 min-h-screen;
+position: absolute;
+width:100% ;}
