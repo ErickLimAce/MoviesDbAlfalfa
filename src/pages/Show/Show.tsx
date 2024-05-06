@@ -80,41 +80,52 @@ const Show = () => {
         setFavorites(favs);
         if (favs.includes(String(id))) {
             setIsFavorite(true);
+        } else {
+            setIsFavorite(false);
         }
         setLoading(true);
         getDetails();
         getRecommended();
     }, [id])
 
+    // Este efecto se ejecutará cada vez que se actualice la lista de favoritos
+    useEffect(() => {
+        if (favorites.includes(String(id))) {
+            setIsFavorite(true);
+        } else {
+            setIsFavorite(false);
+        }
+    }, [favorites, id]);
+
     interface RatingProps {
         voteAverage: number;
-      }
-      
-      const Rating: React.FC<RatingProps> = ({ voteAverage }) => {
+    }
+
+    const Rating: React.FC<RatingProps> = ({ voteAverage }) => {
         const maxStars = 5;
         const rating = Math.round((voteAverage / 10) * maxStars);
         const stars = [];
-      
+
         for (let i = 0; i < maxStars; i++) {
-          if (i < rating) {
-            stars.push(<FontAwesomeIcon key={i} icon={faStar} style={{ color: 'gold' }} />);
-          } else {
-            stars.push(<FontAwesomeIcon key={i} icon={faStar} style={{ color: 'gray' }} />);
-          }
+            if (i < rating) {
+                stars.push(<FontAwesomeIcon key={i} icon={faStar} style={{ color: 'gold' }} />);
+            } else {
+                stars.push(<FontAwesomeIcon key={i} icon={faStar} style={{ color: 'gray' }} />);
+            }
         }
-      
+
         return (
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{ marginRight: '8px' }}>
-                {stars}
-              </div>
-              <span style={{ marginLeft: '4px' }}>{voteAverage.toFixed(2)} / 10</span>
+                <div style={{ marginRight: '8px' }}>
+                    {stars}
+                </div>
+                <span style={{ marginLeft: '4px' }}>{voteAverage.toFixed(2)} / 10</span>
             </div>
-          );
-          
-      };
+        );
 
-      return (
+    };
+
+    return (
         <div className="block-page">
             <div className="mx-44 shadow-2xl rounded-3xl bg-slate-700 pb-16">
                 <div className="p-8">
